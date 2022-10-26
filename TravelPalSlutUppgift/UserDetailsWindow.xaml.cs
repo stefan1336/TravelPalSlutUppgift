@@ -22,9 +22,11 @@ namespace TravelPalSlutUppgift
     public partial class UserDetailsWindow : Window
     {
         private UserManager userManager;
-        public UserDetailsWindow()
+        public UserDetailsWindow(UserManager userManager)
         {
             InitializeComponent();
+
+            this.userManager = userManager;
 
             string[] getCountries = Enum.GetNames(typeof(Countries));
 

@@ -43,6 +43,8 @@ namespace TravelPalSlutUppgift
 
             UppdateUi();
 
+
+            this.userManager = userManager;
         }
 
         private void UppdateUi()
@@ -56,7 +58,7 @@ namespace TravelPalSlutUppgift
         private void btnUserDetails_Click(object sender, RoutedEventArgs e)
         {
             // Öppna user window
-            UserDetailsWindow userDetailsWindow = new();
+            UserDetailsWindow userDetailsWindow = new(userManager);
             userDetailsWindow.Show();
             //Close();
         }
