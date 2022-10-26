@@ -1,0 +1,158 @@
+﻿<Window x:Class="TravelPalSlutUppgift.AddTravelsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TravelPalSlutUppgift"
+        mc:Ignorable="d"
+        Title="AddTravelsWindow" Height="450" Width="800">
+    <Grid Background="MintCream" Margin="10">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Label
+            Name="lbAddTravels"
+            Grid.Row="1"
+            Grid.Column="2"
+            Grid.ColumnSpan="2"
+            Grid.RowSpan="2"
+            VerticalAlignment="Center"
+            HorizontalAlignment="Center"
+            Content="Add travels"
+            FontFamily="Arial"
+            Foreground="MediumSlateBlue"
+            FontSize="30"/>
+        <Label
+            Name="lbDestination"
+            Grid.Row="3"
+            Grid.Column="2"
+            Content="Destination:"
+            FontFamily="Arial"
+            FontSize="14"
+            VerticalAlignment="Center"
+            HorizontalAlignment="Center"
+            Foreground="MediumSlateBlue"
+            />
+        <Label
+            Name="lbCountry"
+            Grid.Row="4"
+            Grid.Column="2"
+            Content="Country"
+            FontFamily="Arial"
+            FontSize="14"
+            VerticalAlignment="Center"
+            HorizontalAlignment="Center"
+            Foreground="MediumSlateBlue"/>
+        <Label
+            Name="lbTravelers"
+            Grid.Row="5"
+            Grid.Column="2"
+            Content="Travelers"
+            FontFamily="Arial"
+            FontSize="14"
+            VerticalAlignment="Center"
+            HorizontalAlignment="Center"
+            Foreground="MediumSlateBlue"/>
+        <Label
+            Name="lbTripOrVacation"
+            Grid.Row="6"
+            Grid.Column="2"
+            Content="Trip / Vacation"
+            FontFamily="Arial"
+            FontSize="14"
+            VerticalAlignment="Center"
+            HorizontalAlignment="Center"
+            Foreground="MediumSlateBlue"/>
+        <TextBox
+            Name="txtDestination"
+            Grid.Row="3"
+            Grid.Column="3"
+            Foreground="MediumSlateBlue"
+            Background="Transparent"
+            BorderBrush="MediumSlateBlue"
+            VerticalContentAlignment="Center"
+            Margin="10"
+            />
+        <TextBox
+            Name="txtTravelers"
+            Grid.Row="5"
+            Grid.Column="3"
+            Foreground="MediumSlateBlue"
+            Background="Transparent"
+            BorderBrush="MediumSlateBlue"
+            VerticalContentAlignment="Center"
+            Margin="10"
+            />
+
+        <ComboBox
+            Name="cbCountry"
+            Grid.Row="4"
+            Grid.Column="3"
+            Margin="10"
+            FontFamily="Arial"
+            />
+        <ComboBox
+            Name="cbTripOrVacation"
+            Grid.Row="6"
+            Grid.Column="3"
+            Margin="10"
+            FontFamily="Arial" SelectionChanged="cbTripOrVacation_SelectionChanged"
+            />
+        <ComboBox
+            Name="cbTriChoose"
+            Grid.Row="6"
+            Grid.Column="4"
+            Margin="10"
+            FontFamily="Arial"
+            Visibility="Hidden"
+            />
+        <CheckBox
+            Name="cbVacationChoose"
+            Grid.Row="6"
+            Grid.Column="4"
+            Margin="10"
+            FontFamily="Arial"
+            VerticalContentAlignment="Center"
+            BorderBrush="MediumSlateBlue"
+            Foreground="MediumSlateBlue"
+            FontSize="14"
+            Visibility="Hidden"
+            Content="All Inclusive"
+            />
+        <Button
+            Name="btnSaveTravelInfo"
+            Grid.Row="7"
+            Grid.Column="3"
+            Grid.RowSpan="2"
+            VerticalAlignment="Top"
+            Margin="10"
+            Content="Save"
+            FontFamily="Arial"
+            Foreground="MintCream"
+            Background="MediumSlateBlue"
+            BorderBrush="MintCream"
+            Height="30" Click="btnSaveTravelInfo_Click">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="10"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+    </Grid>
+</Window>

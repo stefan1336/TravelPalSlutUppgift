@@ -1,0 +1,195 @@
+﻿<Window x:Class="TravelPalSlutUppgift.TravelsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TravelPalSlutUppgift"
+        mc:Ignorable="d"
+        Title="TravelsWindow" Height="450" Width="800">
+    <Grid Background="MintCream" Margin="10">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Label
+            Name="lbTraveslWindow"
+            Grid.Row="1"
+            Grid.Column="2"
+            Grid.ColumnSpan="2"
+            Grid.RowSpan="2"
+            VerticalAlignment="Center"
+            HorizontalAlignment="Center"
+            Content="Travels window"
+            FontFamily="Arial"
+            Foreground="MediumSlateBlue"
+            FontSize="30"/>
+        <TextBox
+            Name="txtUserName"
+            Grid.Row="0"
+            Grid.Column="5"
+            Foreground="MediumSlateBlue"
+            Background="Transparent"
+            BorderBrush="Black"
+            VerticalContentAlignment="Center"
+            Margin="10"
+            />
+        <ListView
+            Name="lwTravelInfo"
+            Grid.Row="3"
+            Grid.Column="2"
+            Grid.RowSpan="3"
+            Background="Transparent"
+            BorderBrush="Black"
+            FontFamily="Arial"
+            Foreground="MediumSlateBlue"
+            />
+        <Button
+            Name="btnUserDetails"
+            Grid.Row="0"
+            Grid.Column="4"
+            Grid.RowSpan="2"
+            VerticalAlignment="Top"
+            HorizontalAlignment="Right"
+            Margin="10"
+            Content="User"
+            FontFamily="Arial"
+            Foreground="MintCream"
+            Background="MediumSlateBlue"
+            BorderBrush="MintCream"
+            Height="30"
+            Width="40"
+            Click="btnUserDetails_Click">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="10"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <Button
+            Name="btnAdd"
+            Grid.Row="3"
+            Grid.Column="3"
+            Grid.RowSpan="2"
+            VerticalAlignment="Top"
+            Margin="10"
+            Content="Add"
+            FontFamily="Arial"
+            Foreground="MintCream"
+            Background="MediumSlateBlue"
+            BorderBrush="MintCream"
+            Height="30"
+            Click="btnAdd_Click"
+            >
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="10"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <Button
+            Name="btnRemove"
+            Grid.Row="4"
+            Grid.Column="3"
+            Grid.RowSpan="2"
+            VerticalAlignment="Top"
+            Margin="10"
+            Content="Remove"
+            FontFamily="Arial"
+            Foreground="MintCream"
+            Background="MediumSlateBlue"
+            BorderBrush="MintCream"
+            Height="30"
+            Click="btnRemove_Click"
+            >
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="10"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <Button
+            Name="btnDetails"
+            Grid.Row="5"
+            Grid.Column="3"
+            Grid.RowSpan="2"
+            VerticalAlignment="Top"
+            Margin="10"
+            Content="Details"
+            FontFamily="Arial"
+            Foreground="MintCream"
+            Background="MediumSlateBlue"
+            BorderBrush="MintCream"
+            Height="30"
+            Click="btnDetails_Click"
+            >
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="10"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <Button
+            Name="btnSignOut"
+            Grid.Row="7"
+            Grid.Column="4"
+            Grid.RowSpan="2"
+            Grid.ColumnSpan="2"
+            VerticalAlignment="Bottom"
+            HorizontalAlignment="Right"
+            Margin="10"
+            Content="Sign Out"
+            FontFamily="Arial"
+            Foreground="MintCream"
+            Background="MediumSlateBlue"
+            BorderBrush="MintCream"
+            Height="30"
+            Width="52"
+            Click="btnSignOut_Click">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="10"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <Button
+            Name="btnInfo"
+            Grid.Row="0"
+            Grid.Column="0"
+            Grid.RowSpan="2"
+            Grid.ColumnSpan="2"
+            VerticalAlignment="Top"
+            HorizontalAlignment="Left"
+            Margin="10"
+            Content="Info"
+            FontFamily="Arial"
+            Foreground="MintCream"
+            Background="MediumSlateBlue"
+            BorderBrush="MintCream"
+            Height="30"
+            Width="52"
+            Click="btnInfo_Click">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="10"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+    </Grid>
+    
+    
+</Window>

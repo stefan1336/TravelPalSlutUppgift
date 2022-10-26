@@ -1,0 +1,141 @@
+﻿<Window x:Class="TravelPalSlutUppgift.RegisterWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TravelPalSlutUppgift"
+        mc:Ignorable="d"
+        Title="RegisterWindow" Height="450" Width="800">
+    <Grid Background="MintCream" Margin="10">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        
+        <Label
+            Name="lbRegister"
+            Grid.Row="1"
+            Grid.Column="2"
+            Grid.ColumnSpan="2"
+            Grid.RowSpan="2"
+            VerticalAlignment="Center"
+            HorizontalAlignment="Center"
+            Content="Register new user"
+            FontFamily="Arial"
+            Foreground="MediumSlateBlue"
+            FontSize="30"/>
+        <Label 
+            Name="lbUsername"
+            Grid.Row="3"
+            Grid.Column="2"
+            Content="Username"
+            FontFamily="Arial"
+            FontSize="14"
+            VerticalAlignment="Center"
+            HorizontalAlignment="Center"
+            Foreground="MediumSlateBlue"/>
+        <Label
+            Name="lbPassword"
+            Grid.Row="4"
+            Grid.Column="2"
+            Content="Password"
+            FontFamily="Arial"
+            FontSize="14"
+            VerticalAlignment="Center"
+            HorizontalAlignment="Center"
+            Foreground="MediumSlateBlue"/>
+        <Label
+            Name="lbConfirmPassword"
+            Grid.Row="5"
+            Grid.Column="2"
+            Content="Confirm Password"
+            FontFamily="Arial"
+            FontSize="14"
+            VerticalAlignment="Center"
+            HorizontalAlignment="Center"
+            Foreground="MediumSlateBlue"/>
+        <Label
+            Name="lbCountry"
+            Grid.Row="6"
+            Grid.Column="2"
+            Content="Country"
+            FontFamily="Arial"
+            FontSize="14"
+            VerticalAlignment="Center"
+            HorizontalAlignment="Center"
+            Foreground="MediumSlateBlue"/>
+        <TextBox
+            Name="txtUserName"
+            Grid.Row="3"
+            Grid.Column="3"
+            Foreground="MediumSlateBlue"
+            Background="Transparent"
+            BorderBrush="MediumSlateBlue"
+            VerticalContentAlignment="Center"
+            Margin="10"
+            />
+        
+        <PasswordBox
+            Name="pswPassWord"
+            Grid.Row="4"
+            Grid.Column="3"
+            Foreground="MediumSlateBlue"
+            Background="Transparent"
+            BorderBrush="MediumSlateBlue"
+            VerticalContentAlignment="Center"
+            Margin="10"
+            /> 
+        <PasswordBox
+            Name="pswConfirmPassword"
+            Grid.Row="5"
+            Grid.Column="3"
+            Foreground="MediumSlateBlue"
+            Background="Transparent"
+            BorderBrush="MediumSlateBlue"
+            VerticalContentAlignment="Center"
+            Margin="10"
+            />
+        <ComboBox
+            Name="cbCountry"
+            Grid.Row="6"
+            Grid.Column="3"
+            Margin="10"
+            FontFamily="Arial"
+            />
+        <Button
+            Name="btnRegister"
+            Grid.Row="7"
+            Grid.Column="3"
+            Grid.RowSpan="2"
+            VerticalAlignment="Top"
+            Margin="10"
+            Content="Register"
+            FontFamily="Arial"
+            Foreground="MintCream"
+            Background="MediumSlateBlue"
+            BorderBrush="MintCream"
+            Height="30" Click="btnRegister_Click">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="10"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+
+    </Grid>
+</Window>

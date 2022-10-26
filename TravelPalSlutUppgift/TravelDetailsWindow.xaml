@@ -1,0 +1,118 @@
+﻿<Window x:Class="TravelPalSlutUppgift.TravelDetailsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TravelPalSlutUppgift"
+        mc:Ignorable="d"
+        Title="TravelDetailsWindow" Height="450" Width="800">
+    <Grid Background="MintCream" Margin="10">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Label
+            Name="lbTravelDetails"
+            Grid.Row="1"
+            Grid.Column="2"
+            Grid.ColumnSpan="2"
+            Grid.RowSpan="2"
+            VerticalAlignment="Center"
+            HorizontalAlignment="Center"
+            Content="Travel Details"
+            FontFamily="Arial"
+            Foreground="MediumSlateBlue"
+            FontSize="30"/>
+        <Label
+            Name="lbDestination"
+            Grid.Row="3"
+            Grid.Column="2"
+            Content="Destination:"
+            FontFamily="Arial"
+            FontSize="14"
+            VerticalAlignment="Center"
+            HorizontalAlignment="Center"
+            Foreground="MediumSlateBlue"
+            />
+        <Label
+            Name="lbCountry"
+            Grid.Row="4"
+            Grid.Column="2"
+            Content="Country"
+            FontFamily="Arial"
+            FontSize="14"
+            VerticalAlignment="Center"
+            HorizontalAlignment="Center"
+            Foreground="MediumSlateBlue"/>
+        <Label
+            Name="lbTravelers"
+            Grid.Row="5"
+            Grid.Column="2"
+            Content="Travelers"
+            FontFamily="Arial"
+            FontSize="14"
+            VerticalAlignment="Center"
+            HorizontalAlignment="Center"
+            Foreground="MediumSlateBlue"/>
+        <Label
+            Name="lbTripOrVacation"
+            Grid.Row="6"
+            Grid.Column="3"
+            Content="Change this:"
+            FontFamily="Arial"
+            FontSize="14"
+            VerticalAlignment="Center"
+            HorizontalAlignment="Center"
+            Foreground="MediumSlateBlue"/>
+        <Label
+            Name="lbSpecial"
+            Grid.Row="7"
+            Grid.Column="3"
+            Content="Change this:"
+            FontFamily="Arial"
+            FontSize="14"
+            VerticalAlignment="Center"
+            HorizontalAlignment="Center"
+            Foreground="MediumSlateBlue"
+            />
+        <TextBox
+            Name="txtDestination"
+            Grid.Row="3"
+            Grid.Column="3"
+            Margin="10"
+            Background="Transparent"
+            BorderBrush="Transparent"
+            Foreground="MediumSlateBlue"/>
+        <TextBox
+            Name="txtCountry"
+            Grid.Row="4"
+            Grid.Column="3"
+            Margin="10"
+            Background="Transparent"
+            BorderBrush="Transparent"
+            Foreground="MediumSlateBlue"/>
+        <TextBox
+            Name="txtTravelers"
+            Grid.Row="5"
+            Grid.Column="3"
+            Margin="10"
+            Background="Transparent"
+            BorderBrush="Transparent"
+            Foreground="MediumSlateBlue"/>
+    </Grid>
+</Window>
