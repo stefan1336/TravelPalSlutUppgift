@@ -38,7 +38,7 @@ namespace TravelPalSlutUppgift
 
         private void btnRegister_Click(object sender, RoutedEventArgs e)
         {
-            MainWindow mainwindow = new();
+
             // Registrera användare
             string username = txtUserName.Text;
             string password = pswPassWord.Password;
@@ -46,6 +46,7 @@ namespace TravelPalSlutUppgift
             Countries selectedCountry = (Countries)Enum.Parse(typeof(Countries), country);
             // Få confirm password att funka?
             string confirmPassword = pswConfirmPassword.Password;
+
             
 
             // skapa en if sats om användarnamet redan finns
@@ -53,10 +54,16 @@ namespace TravelPalSlutUppgift
 
             if(this.userManager.ConfirmPassword(password, confirmPassword))
             {
+                // Lyckats adda en user
                 if (this.userManager.AddUser(username, password, selectedCountry))
                 {
-                    // Lyckats adda en user
                     
+                    // Återgå till mainwindow
+
+                    MainWindow mainwindow = new(userManager);
+                    mainwindow.Show();
+                    Close();
+
                 }
                 else
                 {
@@ -68,9 +75,7 @@ namespace TravelPalSlutUppgift
                 MessageBox.Show("Passwords don't match!", "Warning!");
             }
 
-            Close();
 
-            mainwindow.Show();
 
 
             

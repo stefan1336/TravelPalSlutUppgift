@@ -38,14 +38,15 @@
             FontFamily="Arial"
             Foreground="MediumSlateBlue"
             FontSize="30"/>
-        <TextBox
-            Name="txtUserName"
+        <Label
+            Name="lbUserName"
             Grid.Row="0"
             Grid.Column="5"
+            Grid.RowSpan="2"
             Foreground="MediumSlateBlue"
             Background="Transparent"
-            BorderBrush="Black"
-            VerticalContentAlignment="Center"
+            BorderBrush="Transparent"
+            VerticalContentAlignment="Top"
             Margin="10"
             />
         <ListView

@@ -4,6 +4,7 @@ using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using TravelPalSlutUppgift.Enums;
 
 namespace TravelPalSlutUppgift.Managers
@@ -13,14 +14,15 @@ namespace TravelPalSlutUppgift.Managers
     {
         // Gjort en user lista att lägga till användare och admin i
         private List<IUser> users = new();
+        public IUser SignedInUser { get; set; }
 
 
         // Skapat en Admin och lagt till användarnamn och lösen för den
         public UserManager()
         {
-            Admin admin = new("Gandalf", "password", Enums.Countries.Sweden);
+            User user = new("Gandalf", "password", Enums.Countries.Sweden);
 
-            users.Add(admin);
+            users.Add(user);
         }
 
         // Skapat en metod för att hämta alla användare
@@ -34,11 +36,7 @@ namespace TravelPalSlutUppgift.Managers
         {
             if(ValidateUsername(username))
             {
-                User user = new();
-
-                user.UserName = username;
-                user.Password = password;
-                user.Locations = country;
+                User user = new(username, password, country);
 
                 users.Add((user));
 
@@ -67,12 +65,11 @@ namespace TravelPalSlutUppgift.Managers
             {
                 if(user.UserName == username)
                 {
+                    
                     return false;
+                    
                 }
-                else
-                {
-                    return true;
-                }
+
                 
             }
             return true;
@@ -92,16 +89,20 @@ namespace TravelPalSlutUppgift.Managers
             return false;
         }
 
-        private bool validateUsername()
-        {
-            // bekräfta användarnamn
 
-            return false;
-        }
 
-        private bool signInUser()
+        public bool signInUser(string username, string password)
         {
-            // Är användaren inloggad
+            // Logga in användaren
+
+            foreach (IUser user in users)
+            {
+                if (user.UserName == username && user.Password == password)
+                {
+                    SignedInUser = user;
+                    return true;             
+                }
+            }
 
             return false;
         }

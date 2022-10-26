@@ -11,6 +11,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using TravelPalSlutUppgift.Enums;
+using TravelPalSlutUppgift.Managers;
 
 namespace TravelPalSlutUppgift
 {
@@ -19,9 +21,14 @@ namespace TravelPalSlutUppgift
     /// </summary>
     public partial class UserDetailsWindow : Window
     {
+        private UserManager userManager;
         public UserDetailsWindow()
         {
             InitializeComponent();
+
+            string[] getCountries = Enum.GetNames(typeof(Countries));
+
+            cbCountry.ItemsSource = getCountries;
         }
 
         private void btnSave_Click(object sender, RoutedEventArgs e)
@@ -33,6 +40,10 @@ namespace TravelPalSlutUppgift
         private void btnCancel_Click(object sender, RoutedEventArgs e)
         {
             // återgå till transferwindow
+            TravelsWindow travelsWindow = new(userManager);
+            travelsWindow.Show();
+            Close();
+
         }
     }
 }

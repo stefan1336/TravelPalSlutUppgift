@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using TravelPalSlutUppgift.Enums;
 using TravelPalSlutUppgift.Managers;
 
 namespace TravelPalSlutUppgift
@@ -25,6 +26,13 @@ namespace TravelPalSlutUppgift
         {
             InitializeComponent();
 
+            string[] getCountries = Enum.GetNames(typeof(Countries));
+
+            cbCountry.ItemsSource = getCountries;
+
+            string[] getTripVacation = Enum.GetNames(typeof(TripTypes));
+
+            cbTripOrVacation.ItemsSource = getTripVacation;
 
         }
 

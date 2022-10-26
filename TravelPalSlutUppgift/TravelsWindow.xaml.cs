@@ -21,22 +21,24 @@ namespace TravelPalSlutUppgift
     public partial class TravelsWindow : Window
     {
         // skicka med användaren till resefönstret
+        private UserManager userManager;
 
 
-        private User user = new();
+        private User user;
         private Admin admin;
 
-        public TravelsWindow(UserManager userManager, IUser user)
+        public TravelsWindow(UserManager userManager)
         {
             InitializeComponent();
 
-            if(user is User)
+            if(userManager.SignedInUser is User)
             {
-                this.user = user as User;
+                this.user = userManager.SignedInUser as User;
+                
             }
-            else if (user is Admin)
+            else if (userManager.SignedInUser is Admin)
             {
-                this.admin = user as Admin;
+                this.admin = userManager.SignedInUser as Admin;
             }
 
             UppdateUi();
@@ -46,26 +48,41 @@ namespace TravelPalSlutUppgift
         private void UppdateUi()
         {
             // Uppdatera Ui
+            lbUserName.Content = this.user.UserName;
+            //txtUserName.Text = this.user.UserName;
+            
         }
 
         private void btnUserDetails_Click(object sender, RoutedEventArgs e)
         {
             // Öppna user window
+            UserDetailsWindow userDetailsWindow = new();
+            userDetailsWindow.Show();
+            //Close();
         }
 
         private void btnInfo_Click(object sender, RoutedEventArgs e)
         {
             // Poppa upp en liten ruta med info om företaget
+            MessageBox.Show("This is a company started by Albin Karlsson for his students to show their skills in oop");
         }
 
         private void btnSignOut_Click(object sender, RoutedEventArgs e)
         {
             // Logga ut, återgå till mainwindow
+            MainWindow mainwindow = new(userManager);
+            mainwindow.Show();
+            Close();
+
+
         }
 
         private void btnDetails_Click(object sender, RoutedEventArgs e)
         {
             // öppna fönstret travel details om en specifik resa i listviewn
+            TravelDetailsWindow travelDetailsWindow = new();
+            travelDetailsWindow.Show();
+            //Close();
         }
 
         private void btnRemove_Click(object sender, RoutedEventArgs e)
@@ -76,6 +93,10 @@ namespace TravelPalSlutUppgift
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
             // Öppna upp fönstret Add för att lägga till resor till listwiev
+            AddTravelsWindow addTravelsWindow = new();
+            addTravelsWindow.Show();
+            //Close();
+
         }
     }
 }

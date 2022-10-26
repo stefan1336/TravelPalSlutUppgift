@@ -21,10 +21,19 @@ namespace TravelPalSlutUppgift
     /// </summary>
     public partial class MainWindow : Window
     {
-        private UserManager userManager = new();
+        private UserManager userManager;
         public MainWindow()
         {
             InitializeComponent();
+
+            this.userManager = new();
+        }
+        
+        public MainWindow(UserManager userManager)
+        {
+            InitializeComponent();
+
+            this.userManager = userManager;
         }
 
         private void btnRegister_Click(object sender, RoutedEventArgs e)
@@ -45,34 +54,14 @@ namespace TravelPalSlutUppgift
             string username = txtUserName.Text;
             string password = pswPassword.Password;
 
-            bool isFoundUser = false;
-
-            foreach(IUser user in users)
+            if(userManager.signInUser(username, password))
             {
-                if(user.UserName == username && user.Password == password)
-                {
-                    isFoundUser = true;
+                TravelsWindow travelsWindow = new(userManager);
 
-                    if(user is User)
-                    {
-                        // Om en användare är user så skickas man till userwindow
-                        TravelsWindow travelsWindow = new(userManager, user);
-
-                      
-                        travelsWindow.Show();
-                       
-                        
-                    }
-                    else if(user is Admin)
-                    {
-                        // Koppla till travelswindow med möjlighet att ändra och ta bort saker
-
-                        
-                    }
-                }
+                Close();
+                travelsWindow.Show();
             }
-
-            if (!isFoundUser)
+            else
             {
                 MessageBox.Show("Username or password is incorrect");
             }
