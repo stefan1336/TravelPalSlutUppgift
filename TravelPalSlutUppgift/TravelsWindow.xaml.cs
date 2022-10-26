@@ -24,11 +24,20 @@ namespace TravelPalSlutUppgift
 
 
         private User user = new();
-        public TravelsWindow(UserManager userManager, User user)
+        private Admin admin;
+
+        public TravelsWindow(UserManager userManager, IUser user)
         {
             InitializeComponent();
 
-            this.user = user as User;
+            if(user is User)
+            {
+                this.user = user as User;
+            }
+            else if (user is Admin)
+            {
+                this.admin = user as Admin;
+            }
 
             UppdateUi();
 

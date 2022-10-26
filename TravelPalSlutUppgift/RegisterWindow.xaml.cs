@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using TravelPalSlutUppgift.Enums;
 using TravelPalSlutUppgift.Managers;
 
 namespace TravelPalSlutUppgift
@@ -21,9 +22,15 @@ namespace TravelPalSlutUppgift
     public partial class RegisterWindow : Window
     {
         private UserManager userManager;
+        
         public RegisterWindow(UserManager userManager)
         {
             InitializeComponent();
+
+            // Lägga till mina enum i comboboxen i register
+            string[] getAllCountries = Enum.GetNames(typeof(Countries));
+
+            cbCountry.ItemsSource=getAllCountries;
 
             this.userManager = userManager;
 
@@ -31,13 +38,42 @@ namespace TravelPalSlutUppgift
 
         private void btnRegister_Click(object sender, RoutedEventArgs e)
         {
+            MainWindow mainwindow = new();
             // Registrera användare
             string username = txtUserName.Text;
             string password = pswPassWord.Password;
+            string country = cbCountry.SelectedItem as string;
+            Countries selectedCountry = (Countries)Enum.Parse(typeof(Countries), country);
             // Få confirm password att funka?
             string confirmPassword = pswConfirmPassword.Password;
+            
 
-            this.userManager.AddUser(username, password);
+            // skapa en if sats om användarnamet redan finns
+            
+
+            if(this.userManager.ConfirmPassword(password, confirmPassword))
+            {
+                if (this.userManager.AddUser(username, password, selectedCountry))
+                {
+                    // Lyckats adda en user
+                    
+                }
+                else
+                {
+                    MessageBox.Show("Username is invalid or upptaget", "Warning!");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Passwords don't match!", "Warning!");
+            }
+
+            Close();
+
+            mainwindow.Show();
+
+
+            
         }
     }
 }

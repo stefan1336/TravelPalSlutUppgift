@@ -21,7 +21,7 @@ namespace TravelPalSlutUppgift
     /// </summary>
     public partial class MainWindow : Window
     {
-        private UserManager userManager;
+        private UserManager userManager = new();
         public MainWindow()
         {
             InitializeComponent();
@@ -33,6 +33,8 @@ namespace TravelPalSlutUppgift
             RegisterWindow registerWindow = new(userManager);
 
             registerWindow.Show();
+
+            Close();
         }
 
         private void btnSignIn_Click(object sender, RoutedEventArgs e)
@@ -56,11 +58,16 @@ namespace TravelPalSlutUppgift
                         // Om en användare är user så skickas man till userwindow
                         TravelsWindow travelsWindow = new(userManager, user);
 
+                      
                         travelsWindow.Show();
+                       
+                        
                     }
                     else if(user is Admin)
                     {
                         // Koppla till travelswindow med möjlighet att ändra och ta bort saker
+
+                        
                     }
                 }
             }

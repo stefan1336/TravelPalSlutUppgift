@@ -11,6 +11,13 @@ namespace TravelPalSlutUppgift.Managers
     {
         public string UserName { get ; set ; }
         public string Password { get ; set ; }
-        public Countries Locations { get ; set ; }
+        public Countries Locations { get; set; }
+
+        public Admin(string userName, string password, Countries locations)
+        {
+            UserName=userName;
+            Password=password;
+            Locations=locations;
+        }
     }
 }
