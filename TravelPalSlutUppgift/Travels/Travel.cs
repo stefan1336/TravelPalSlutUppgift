@@ -13,9 +13,23 @@ namespace TravelPalSlutUppgift.Travels
         public Countries Countrys { get; set; }
         public int Travelers { get; set; }
 
-        public Travel()
+        
+        
+
+        public Travel(string destination, Countries countrys, int travelers )
         {
             // props
+            Destination = destination;
+            Countrys = countrys;
+            Travelers = travelers;
+            
+            
+        }
+
+        public virtual string GetInfo()
+        {
+            // sträng
+            return $" {Countrys} ";
         }
     }
 }

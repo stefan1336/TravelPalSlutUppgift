@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using TravelPalSlutUppgift.Managers;
+using TravelPalSlutUppgift.Travels;
 
 namespace TravelPalSlutUppgift
 {
@@ -21,8 +23,11 @@ namespace TravelPalSlutUppgift
     public partial class TravelsWindow : Window
     {
         // skicka med användaren till resefönstret
+
+        List<Travel> travels = new();
         private UserManager userManager;
 
+        TravelManager travelManager;
 
         private User user;
         private Admin admin;
@@ -31,20 +36,39 @@ namespace TravelPalSlutUppgift
         {
             InitializeComponent();
 
-            if(userManager.SignedInUser is User)
-            {
-                this.user = userManager.SignedInUser as User;
-                
-            }
-            else if (userManager.SignedInUser is Admin)
-            {
-                this.admin = userManager.SignedInUser as Admin;
-            }
+            this.travelManager = new();
+            this.userManager = userManager;
+
+            InitializeUserSettings();
 
             UppdateUi();
 
+         
+        }
 
+        public TravelsWindow(UserManager userManager, TravelManager travelManager)
+        {
+            InitializeComponent();
+
+            this.travelManager = travelManager;
             this.userManager = userManager;
+
+            InitializeUserSettings();
+
+            UppdateUi();
+        }
+
+        private void InitializeUserSettings()
+        {
+            if (this.userManager.SignedInUser is User)
+            {
+                this.user = userManager.SignedInUser as User;
+
+            }
+            else if (this.userManager.SignedInUser is Admin)
+            {
+                this.admin = userManager.SignedInUser as Admin;
+            }
         }
 
         private void UppdateUi()
@@ -52,7 +76,29 @@ namespace TravelPalSlutUppgift
             // Uppdatera Ui
             lbUserName.Content = this.user.UserName;
             //txtUserName.Text = this.user.UserName;
-            
+
+            //foreach (Travel travel in travels)
+            //{
+            //    ListViewItem listViewItem = new();
+
+            //    listViewItem.Content = travel.GetInfo();
+            //    listViewItem.Tag = travel;
+
+            //    lwTravelInfo.Items.Add(listViewItem);
+            //}
+
+            if (this.userManager.SignedInUser is User)
+            {
+                User signedInUser = this.userManager.SignedInUser as User;  
+
+                if(signedInUser.Travels.Count > 0)
+                {
+                    foreach (var travel in signedInUser.Travels)
+                    {
+                        lwTravelInfo.Items.Add(travel.GetInfo());
+                    }
+                }
+            }
         }
 
         private void btnUserDetails_Click(object sender, RoutedEventArgs e)
@@ -76,7 +122,6 @@ namespace TravelPalSlutUppgift
             mainwindow.Show();
             Close();
 
-
         }
 
         private void btnDetails_Click(object sender, RoutedEventArgs e)
@@ -95,9 +140,9 @@ namespace TravelPalSlutUppgift
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
             // Öppna upp fönstret Add för att lägga till resor till listwiev
-            AddTravelsWindow addTravelsWindow = new();
+            AddTravelsWindow addTravelsWindow = new(travelManager, userManager);
             addTravelsWindow.Show();
-            //Close();
+            Close();
 
         }
     }

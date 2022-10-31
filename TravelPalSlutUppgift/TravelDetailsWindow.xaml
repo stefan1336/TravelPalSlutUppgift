@@ -90,24 +90,24 @@
             HorizontalAlignment="Center"
             Foreground="MediumSlateBlue"
             />
-        <TextBox
-            Name="txtDestination"
+        <Label
+            Name="lblDestination"
             Grid.Row="3"
             Grid.Column="3"
             Margin="10"
             Background="Transparent"
             BorderBrush="Transparent"
             Foreground="MediumSlateBlue"/>
-        <TextBox
-            Name="txtCountry"
+        <Label
+            Name="lblCountry"
             Grid.Row="4"
             Grid.Column="3"
             Margin="10"
             Background="Transparent"
             BorderBrush="Transparent"
             Foreground="MediumSlateBlue"/>
-        <TextBox
-            Name="txtTravelers"
+        <Label
+            Name="lblTravelers"
             Grid.Row="5"
             Grid.Column="3"
             Margin="10"

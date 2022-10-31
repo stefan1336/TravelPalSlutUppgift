@@ -9,17 +9,22 @@ namespace TravelPalSlutUppgift.Travels
 {
     public class Trip : Travel
     {
+
         // typ av resa
         public TripTypes Type { get; set; }
-
-        public Trip()
+        public Trip(string destination, Countries countrys, int travelers, TripTypes types) : base(destination, countrys, travelers)
         {
-            // Type of trip
+            Destination = destination;
+            Countrys = countrys;
+            Travelers = travelers;
+            Type = types;
         }
 
-        public void GetInfo()
+
+        public override string GetInfo()
         {
-            // Get info string
+            // sträng
+            return $"{base.Countrys} ";
         }
     }
 }

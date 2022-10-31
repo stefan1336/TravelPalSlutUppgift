@@ -123,7 +123,7 @@
             Visibility="Hidden"
             />
         <CheckBox
-            Name="cbVacationChoose"
+            Name="xbVacationChoose"
             Grid.Row="6"
             Grid.Column="4"
             Margin="10"
