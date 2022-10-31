@@ -95,7 +95,11 @@ namespace TravelPalSlutUppgift
                 {
                     foreach (var travel in signedInUser.Travels)
                     {
-                        lwTravelInfo.Items.Add(travel.GetInfo());
+                        ListViewItem item = new();
+                        item.Content = travel.GetInfo();
+                        item.Tag = travel;
+
+                        lwTravelInfo.Items.Add(item);
                     }
                 }
             }
@@ -104,6 +108,7 @@ namespace TravelPalSlutUppgift
         private void btnUserDetails_Click(object sender, RoutedEventArgs e)
         {
             // Öppna user window
+            
             UserDetailsWindow userDetailsWindow = new(userManager);
             userDetailsWindow.Show();
             //Close();
@@ -118,7 +123,7 @@ namespace TravelPalSlutUppgift
         private void btnSignOut_Click(object sender, RoutedEventArgs e)
         {
             // Logga ut, återgå till mainwindow
-            MainWindow mainwindow = new(userManager);
+            MainWindow mainwindow = new(userManager, travelManager);
             mainwindow.Show();
             Close();
 
@@ -127,14 +132,46 @@ namespace TravelPalSlutUppgift
         private void btnDetails_Click(object sender, RoutedEventArgs e)
         {
             // öppna fönstret travel details om en specifik resa i listviewn
-            TravelDetailsWindow travelDetailsWindow = new();
-            travelDetailsWindow.Show();
+            // Om inget är markerat i listview ska ett varningsmedelande visas
+
+            ListViewItem selectedItem = lwTravelInfo.SelectedItem as ListViewItem;
+            
+
+
+            if (selectedItem != null)
+            {
+                Travel selectedTravel = selectedItem.Tag as Travel;
+
+                TravelDetailsWindow travelDetailsWindow = new(userManager, travelManager, selectedTravel);
+                travelDetailsWindow.Show();
+                
+                 
+            }
+            else
+            {
+                MessageBox.Show("You need to pick a travel");
+
+            }
+
             //Close();
         }
 
         private void btnRemove_Click(object sender, RoutedEventArgs e)
         {
+            ListViewItem selectedListViewItem = lwTravelInfo.SelectedItem as ListViewItem;
+
+            if(selectedListViewItem != null)
+            {
+                // Ta bort 
+            }
+            else
+            {
+                MessageBox.Show("You need to pick a travel");
+            }
             // Ta bort en markerad resa från listviewn
+            // Om inget är markerat i listview ska ett varningsmedelande visas
+            
+            
         }
 
         private void btnAdd_Click(object sender, RoutedEventArgs e)

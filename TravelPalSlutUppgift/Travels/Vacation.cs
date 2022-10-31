@@ -29,5 +29,10 @@ namespace TravelPalSlutUppgift.Travels
             // sträng
             return $"{base.Countrys}";
         }
+
+        public override string GetTravelType()
+        {
+            return "Vacation";
+        }
     }
 }

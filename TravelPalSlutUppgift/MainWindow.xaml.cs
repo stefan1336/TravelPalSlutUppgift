@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using TravelPalSlutUppgift.Managers;
+using TravelPalSlutUppgift.Travels;
 
 namespace TravelPalSlutUppgift
 {
@@ -22,24 +23,27 @@ namespace TravelPalSlutUppgift
     public partial class MainWindow : Window
     {
         private UserManager userManager;
+        private TravelManager travelManager;
         public MainWindow()
         {
             InitializeComponent();
 
             this.userManager = new();
+            this.travelManager = new();
         }
         
-        public MainWindow(UserManager userManager)
+        public MainWindow(UserManager userManager, TravelManager travelManager)
         {
             InitializeComponent();
 
             this.userManager = userManager;
+            this.travelManager = travelManager;
         }
 
         private void btnRegister_Click(object sender, RoutedEventArgs e)
         {
             // Registrera användare
-            RegisterWindow registerWindow = new(userManager);
+            RegisterWindow registerWindow = new(userManager, travelManager);
 
             registerWindow.Show();
 

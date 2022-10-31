@@ -31,5 +31,10 @@ namespace TravelPalSlutUppgift.Travels
             // sträng
             return $" {Countrys} ";
         }
+
+        public virtual string GetTravelType()
+        {
+            return "TravelType";
+        }
     }
 }

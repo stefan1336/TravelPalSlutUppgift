@@ -24,24 +24,44 @@ namespace TravelPalSlutUppgift
         private UserManager usermanager;
 
         private User user;
-
-        
-
+        private readonly UserManager userManager;
+        private readonly TravelManager travelManager;
+        private Travel travel;
         AddTravelsWindow addTravelsWindow;
 
-        TravelManager travelManager;
         
 
-        public TravelDetailsWindow()
+        public TravelDetailsWindow(UserManager userManager, TravelManager travelManager, Travel travel)
         {
             InitializeComponent();
+            this.userManager=userManager;
+            this.travelManager=travelManager;
+            this.travel = travel;
 
-        
+            if(travel is Trip)
+            {
+                Trip trip = travel as Trip;
+
+                lbTripOrVacation.Content = trip.Type;
+            }
+            else if (travel is Vacation)
+            {
+                Vacation vacation = travel as Vacation;
+
+                if(vacation != null && vacation.AllInclusive) 
+                {
+                    lbSpecial.Content = "All Inclusive";
+
+                }
+                else if (vacation != null && !vacation.AllInclusive)
+                {
+                    lbSpecial.Content = "Standard vacation";
+                }
+            }
+
             // Vilken typ av resa är det, då printas trip eller vacation i fönstret
-            lbTripOrVacation.Content = "Trip";
 
             // sätta en if sats för att välja vilken typ det är
-            lbSpecial.Content = "All inclusive:";
 
             UppdateUi();
         }
@@ -50,7 +70,18 @@ namespace TravelPalSlutUppgift
 
         private void UppdateUi()
         {
-            lblDestination.Content = this.user.UserName;
+
+            // Uppdatera
+            lblDestination.Content = travel.Destination;
+
+            lblCountry.Content = travel.Countrys;
+
+            lblTravelers.Content = travel.Travelers;
+
+            //lbTripOrVacation.Content = travel.GetTravelType(); // Visa trip
+
+            //lbSpecial.Content = travel.GetTravelType(); // ska stå all inclusive
+
         }
     }
 }

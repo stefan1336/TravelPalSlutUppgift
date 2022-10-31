@@ -14,9 +14,7 @@ namespace TravelPalSlutUppgift.Travels
         public TripTypes Type { get; set; }
         public Trip(string destination, Countries countrys, int travelers, TripTypes types) : base(destination, countrys, travelers)
         {
-            Destination = destination;
-            Countrys = countrys;
-            Travelers = travelers;
+
             Type = types;
         }
 
@@ -25,6 +23,11 @@ namespace TravelPalSlutUppgift.Travels
         {
             // sträng
             return $"{base.Countrys} ";
+        }
+
+        public override string GetTravelType()
+        {
+            return "Trip";
         }
     }
 }

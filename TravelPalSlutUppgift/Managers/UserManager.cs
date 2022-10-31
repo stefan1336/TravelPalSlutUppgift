@@ -22,6 +22,8 @@ namespace TravelPalSlutUppgift.Managers
         {
             User user = new("Gandalf", "password", Enums.Countries.Sweden);
 
+            Admin admin = new("admin", "password", Enums.Countries.Sweden);
+
             users.Add(user);
         }
 
