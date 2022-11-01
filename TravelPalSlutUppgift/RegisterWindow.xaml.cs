@@ -76,11 +76,7 @@ namespace TravelPalSlutUppgift
             {
                 MessageBox.Show("Passwords don't match!", "Warning!");
             }
-
-
-
-
-            
+           
         }
     }
 }

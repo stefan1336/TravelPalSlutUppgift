@@ -12,18 +12,14 @@ namespace TravelPalSlutUppgift.Travels
         public string Destination { get; set; }
         public Countries Countrys { get; set; }
         public int Travelers { get; set; }
-
-        
-        
-
+               
         public Travel(string destination, Countries countrys, int travelers )
         {
             // props
             Destination = destination;
             Countrys = countrys;
             Travelers = travelers;
-            
-            
+                        
         }
 
         public virtual string GetInfo()

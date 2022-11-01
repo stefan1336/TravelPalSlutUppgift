@@ -41,19 +41,28 @@ namespace TravelPalSlutUppgift.Travels
             
         }
 
+        // Ta bort en resa
         public void RemoveTravel(Travel travel)
         {
             travels.Remove(travel);
 
             if(travel is Vacation)
             {
-               travels.Remove(travel as Vacation);
+                Vacation vacation = travel as Vacation;
+                {
+                    travels.Remove(vacation);
+                }
+                
             }
             else if (travel is Trip)
             {
-                travels.Remove(travel as Trip);
+                Trip trip = travel as Trip;
+                {
+                    travels.Remove(trip);
+                }
+                
             }
-            // Ta bort en resa
+            
         }
     }
 }

@@ -14,6 +14,7 @@ namespace TravelPalSlutUppgift.Managers
         public string Password { get ; set ; }
         public Countries Locations { get ; set ; }
         public List<Travel> Travels { get; set; } = new();
+        public string ConfirmPassword { get ; set; }
 
         public User(string userName, string password, Countries locations)
         {

@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using TravelPalSlutUppgift.Enums;
+using TravelPalSlutUppgift.Travels;
 
 namespace TravelPalSlutUppgift.Managers
 {
@@ -22,9 +24,15 @@ namespace TravelPalSlutUppgift.Managers
         {
             User user = new("Gandalf", "password", Enums.Countries.Sweden);
 
+            Vacation vacation1 = new("Varberg", Enums.Countries.Algeria, 2, true);
+            user.Travels.Add(vacation1);
+            Trip vacation2 = new("Leksand", Enums.Countries.Qatar, 1, Enums.TripTypes.Leisure);
+            user.Travels.Add(vacation2);
+
             Admin admin = new("admin", "password", Enums.Countries.Sweden);
 
             users.Add(user);
+            users.Add(admin);
         }
 
         // Skapat en metod för att hämta alla användare
@@ -48,16 +56,45 @@ namespace TravelPalSlutUppgift.Managers
             return false;
         }
 
-        public bool ConfirmPassword(string password, string confirmPassword)
+        public bool UpdatePassword(IUser user, string password, string confirmPassword)
         {
-            if(password == confirmPassword)
+            if (password.Length < 5)
             {
-                return true;
+                MessageBox.Show("Your password is to short");
             }
-            else
+            else if (password == null)
+            {
+                MessageBox.Show("You need to enter a password");
+            }
+            else if (confirmPassword == null)
+            {
+                MessageBox.Show("You forgot to confirm your password");
+            }
+            //if (password.Length<5)
+            //{
+            //    MessageBox.Show("Password is to short");
+            //    return false;
+            //}
+            else if(ConfirmPassword(password, confirmPassword)== false)
             {
                 return false;
             }
+
+            return true;
+        }
+        public bool ConfirmPassword(string password, string confirmPassword)
+        {
+
+                if (password == confirmPassword)
+                {
+                    return true;
+                }
+                else
+                {
+                MessageBox.Show("Password dont match");
+                    return false;
+                }
+      
         }
 
         private bool ValidateUsername(string username)
@@ -67,12 +104,11 @@ namespace TravelPalSlutUppgift.Managers
             {
                 if(user.UserName == username)
                 {
-                    
+                    MessageBox.Show("Username is already taken");
                     return false;
                     
                 }
-
-                
+               
             }
             return true;
             // Om inte upptaget - returnera true
@@ -84,14 +120,30 @@ namespace TravelPalSlutUppgift.Managers
             // Metod för admin att ta bort user
         }
 
-        public bool UpdateUsername()
+        // använda iuser?
+        public bool UpdateUsername(IUser user, string username)
         {
-            // uppdatera användarnamn
+            //user.UserName = username;
+            // uppdatera användarinformation
+            // är användarnamnet för kort får man ett varningsmedelande
+            if(username.Length <3)
+            {
+                MessageBox.Show("Your username is to short ");
+                return false;
+            }
+            else if(username == null)
+            {
+                MessageBox.Show("You need to enter a new username");
+            }
+            else if(ValidateUsername(username)== false)
+            {
+                // om användarnamnet redan finns
+                return false;
+            }
 
-            return false;
+            return true;
+            
         }
-
-
 
         public bool signInUser(string username, string password)
         {

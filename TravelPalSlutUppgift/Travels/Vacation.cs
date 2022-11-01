@@ -18,11 +18,8 @@ namespace TravelPalSlutUppgift.Travels
         {
             // Lägga till allinclusive
             AllInclusive = allInclusive;
-            
-           
+                       
         }
-
-
 
         public override string GetInfo()
         {

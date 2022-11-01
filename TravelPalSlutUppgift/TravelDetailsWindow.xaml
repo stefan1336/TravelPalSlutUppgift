@@ -81,7 +81,7 @@
             Foreground="MediumSlateBlue"/>
         <Label
             Name="lbSpecial"
-            Grid.Row="7"
+            Grid.Row="6"
             Grid.Column="3"
             Content="Change this:"
             FontFamily="Arial"
@@ -94,7 +94,8 @@
             Name="lblDestination"
             Grid.Row="3"
             Grid.Column="3"
-            Margin="10"
+            FontSize="15"
+            Margin="5"
             Background="Transparent"
             BorderBrush="Transparent"
             Foreground="MediumSlateBlue"/>
@@ -102,7 +103,7 @@
             Name="lblCountry"
             Grid.Row="4"
             Grid.Column="3"
-            Margin="10"
+            Margin="5"
             Background="Transparent"
             BorderBrush="Transparent"
             Foreground="MediumSlateBlue"/>
@@ -110,7 +111,7 @@
             Name="lblTravelers"
             Grid.Row="5"
             Grid.Column="3"
-            Margin="10"
+            Margin="5"
             Background="Transparent"
             BorderBrush="Transparent"
             Foreground="MediumSlateBlue"/>

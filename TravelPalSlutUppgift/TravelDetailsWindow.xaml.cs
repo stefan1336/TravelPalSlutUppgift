@@ -10,6 +10,7 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Media.TextFormatting;
 using System.Windows.Shapes;
 using TravelPalSlutUppgift.Managers;
 using TravelPalSlutUppgift.Travels;
@@ -28,9 +29,7 @@ namespace TravelPalSlutUppgift
         private readonly TravelManager travelManager;
         private Travel travel;
         AddTravelsWindow addTravelsWindow;
-
         
-
         public TravelDetailsWindow(UserManager userManager, TravelManager travelManager, Travel travel)
         {
             InitializeComponent();
@@ -38,11 +37,14 @@ namespace TravelPalSlutUppgift
             this.travelManager=travelManager;
             this.travel = travel;
 
-            if(travel is Trip)
+            // Vilken typ av resa är det, då printas trip eller vacation i fönstret
+            if (travel is Trip)
             {
                 Trip trip = travel as Trip;
 
-                lbTripOrVacation.Content = trip.Type;
+                lbTripOrVacation.Content = $"This is a:{trip.Type} trip";
+                lbSpecial.Content= "";
+                // Ta bort så den inte syns
             }
             else if (travel is Vacation)
             {
@@ -51,22 +53,19 @@ namespace TravelPalSlutUppgift
                 if(vacation != null && vacation.AllInclusive) 
                 {
                     lbSpecial.Content = "All Inclusive";
+                    lbTripOrVacation.Content ="";
 
                 }
                 else if (vacation != null && !vacation.AllInclusive)
                 {
                     lbSpecial.Content = "Standard vacation";
+                    lbTripOrVacation.Content ="";
+
                 }
             }
 
-            // Vilken typ av resa är det, då printas trip eller vacation i fönstret
-
-            // sätta en if sats för att välja vilken typ det är
-
             UppdateUi();
         }
-
-
 
         private void UppdateUi()
         {

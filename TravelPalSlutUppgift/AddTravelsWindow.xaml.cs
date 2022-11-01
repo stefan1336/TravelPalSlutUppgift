@@ -26,18 +26,14 @@ namespace TravelPalSlutUppgift
     {
         
         TravelManager travelManager;
-
-        
-
+       
         bool travelIsATrip = false;
         bool travelIsAVacation = false;
         
         private UserManager userManager;
 
         private User user;
-
-        
-
+       
         public AddTravelsWindow(TravelManager travelManager, UserManager userManager)
         {
             InitializeComponent();
@@ -49,9 +45,7 @@ namespace TravelPalSlutUppgift
             string[] getTripVacation = Enum.GetNames(typeof(TripVacation));
 
             cbTripOrVacation.ItemsSource = getTripVacation;
-
             
-
             string[] getLeisureOrWork = Enum.GetNames(typeof(TripTypes));
 
             cbTriChoose.ItemsSource= getLeisureOrWork;
@@ -59,10 +53,7 @@ namespace TravelPalSlutUppgift
             this.userManager=userManager;
 
             this.travelManager=travelManager;
-
-            
-
-
+          
         }
 
         private bool CheckInputs()
@@ -87,12 +78,8 @@ namespace TravelPalSlutUppgift
                     
                 }
             }
-
             return true;
-
-
         }
-
 
         private void btnSaveTravelInfo_Click(object sender, RoutedEventArgs e)
         {
@@ -185,49 +172,7 @@ namespace TravelPalSlutUppgift
     }
 
 
-
-        // Markera ut för att köra programmet
-
-
-
-        //string selectedTripType = cbTriChoose.SelectedItem as string;
-        //TripTypes selectedType = (TripTypes)Enum.Parse(typeof(TripTypes), tripOrVacation);
-
-
-
-        //switch(tripOrVacation)
-        //{
-        //    case "Trip":
-        //        {
-        //            travelManager.CreateTrip(destination, selectedCountry, travelers, selectedType);
-        //            break;
-        //        }
-        //    case "Vacation":
-        //        {
-        //            bool allInclusive = (bool)xbVacationChoose.IsChecked;
-        //            travelManager.CreateVacation(destination, selectedCountry, travelers, allInclusive);
-        //            break;
-        //        }
-
-        //}
-
-        //try
-        //{
-        //    User user = userManager.SignedInUser as User;
-        //    user.Travels.Add(newTravel);
-        //}
-        //catch (Exception ex)
-        //{
-        //    MessageBox.Show(ex.Message);
-        //}
-
-        //if (nyTravel != null)
-        //{
-        //}
-
-
-
-    }
+}
 
 
 
