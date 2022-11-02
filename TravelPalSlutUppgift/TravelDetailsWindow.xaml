@@ -116,7 +116,7 @@
             BorderBrush="Transparent"
             Foreground="MediumSlateBlue"/>
         <Button
-            Name="lblCancel"    
+            Name="btnCancel"    
             Grid.Row="7"
             Grid.Column="4"
             Grid.RowSpan="2"
@@ -131,7 +131,7 @@
             BorderBrush="MintCream"
             Height="30"
             Width="52"
-            Click="lblCancel_Click">
+            Click="btnCancel_Click">
             <Button.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="10"/>

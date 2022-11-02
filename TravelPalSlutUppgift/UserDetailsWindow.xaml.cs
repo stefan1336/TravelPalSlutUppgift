@@ -29,7 +29,8 @@ namespace TravelPalSlutUppgift
         private UserManager userManager;
         private TravelManager travelManager;
 
-        //private IUser iuser; 
+
+        //private IUser iuser;
         private User user;
 
         private Admin admin;
@@ -52,7 +53,6 @@ namespace TravelPalSlutUppgift
             }
 
             
-
             this.userManager = userManager;
             this.travelManager = travelManager;
 
@@ -61,11 +61,6 @@ namespace TravelPalSlutUppgift
             cbCountry.ItemsSource = getCountries;
 
             UpdateUi();
-
-            //txtUserName.Text = userManager.SignedInUser.UserName;
-            //txtPassword.Text = userManager.SignedInUser.Password;
-            //txtConfirmPassword.Text = userManager.SignedInUser.Password;
-            //lbUserInfo.Content = userManager.SignedInUser.Locations;
 
            
         }
@@ -102,9 +97,9 @@ namespace TravelPalSlutUppgift
                 // nullreferenceexception ex
             }
 
-            catch (ArgumentException ex/*Exception ex*/)
+            catch (ArgumentException ex)
             {
-                MessageBox.Show("You need to make a full registration of a updated userinfo"/*ex.Message*/);
+                MessageBox.Show("You need to make a full registration of a updated userinfo");
             }
 
 
@@ -124,9 +119,16 @@ namespace TravelPalSlutUppgift
         {
             // Printa ut användarinformation i rutan
             //lbUserInfo.Content = this.user.UserName;
-            lbUserInfo.Content = $"{user.UserName} {user.Locations}";
-            // Printa ut landet med
-            //lbUserInfo.Content = this.user.Locations;
+            //if(user is User)
+            //{
+                lbUserInfo.Content = $"{user.UserName} {user.Locations}";
+            //}
+            //else if (user is Admin)
+            //{
+            //    lbUserInfo.Content = $"{user.UserName} {user.Locations}";
+            //}
+            
+
         }
     }
 }

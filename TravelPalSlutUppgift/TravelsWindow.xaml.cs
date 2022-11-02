@@ -103,6 +103,7 @@ namespace TravelPalSlutUppgift
                     // Om antalet resor är större än 0
                     if (travelManager.travels.Count > 0)
                     {
+                        btnUserDetails.Visibility = Visibility.Hidden;
                         lwTravelInfo.Items.Clear();
                         foreach (var travel in travelManager.travels)
                         {
@@ -119,22 +120,7 @@ namespace TravelPalSlutUppgift
             }
         }
 
-        //public void FilterTravels()
-        //{
-        //    List<Travel> travel = new();
 
-        //    travel = this.userManager.GetAllUsers();
-
-        //    foreach(Travel addtravel in travel)
-        //    {
-        //        if(travel is Travel)
-        //        {
-        //            travels.Add(addtravel as Travel);
-        //        }
-        //    }
-
-
-        //}
         private void btnUserDetails_Click(object sender, RoutedEventArgs e)
         {
             // Öppna user window
@@ -147,7 +133,9 @@ namespace TravelPalSlutUppgift
         private void btnInfo_Click(object sender, RoutedEventArgs e)
         {
             // Poppa upp en liten ruta med info om företaget
+            MessageBox.Show("This is a travelplaning app. You can add Travels to your list and if you want to remove a travel you can also do that");
             MessageBox.Show("This is a company started by Albin Karlsson for his students to show their skills in oop");
+
         }
 
         private void btnSignOut_Click(object sender, RoutedEventArgs e)

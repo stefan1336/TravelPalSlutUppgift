@@ -148,13 +148,18 @@ namespace TravelPalSlutUppgift
             }
         }
 
+     
+
+        private void btnCancel_Click(object sender, RoutedEventArgs e)
+        {
+            // Gå tillbaka till föregående fönster
+            TravelsWindow travelsWindow = new(userManager, travelManager);
+            travelsWindow.Show();
+            Close();
+        }
+
         private void cbTripOrVacation_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            //this.selectedTravelType = cbTripOrVacation.SelectedItem as string;
-
-            //var tripOrVacation = cbTripOrVacation.SelectedItem as string;
-
-
             switch (cbTripOrVacation.SelectedItem.ToString())
             {
                 case "Trip":
@@ -179,7 +184,6 @@ namespace TravelPalSlutUppgift
                     }
             }
         }
-
     }
 
 

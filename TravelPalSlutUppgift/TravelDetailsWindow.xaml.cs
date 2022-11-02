@@ -83,7 +83,7 @@ namespace TravelPalSlutUppgift
 
         }
 
-        private void lblCancel_Click(object sender, RoutedEventArgs e)
+        private void btnCancel_Click(object sender, RoutedEventArgs e)
         {
             // go back
             TravelsWindow travelsWindow = new(userManager, travelManager);

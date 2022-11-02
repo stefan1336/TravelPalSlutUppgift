@@ -112,7 +112,9 @@
             Grid.Row="6"
             Grid.Column="3"
             Margin="10"
-            FontFamily="Arial" SelectionChanged="cbTripOrVacation_SelectionChanged"
+            FontFamily="Arial" 
+            SelectionChanged="cbTripOrVacation_SelectionChanged"
+           
             />
         <ComboBox
             Name="cbTriChoose"
@@ -148,6 +150,29 @@
             Background="MediumSlateBlue"
             BorderBrush="MintCream"
             Height="30" Click="btnSaveTravelInfo_Click">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="10"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <Button
+            Name="btnCancel"
+            Grid.Row="7"
+            Grid.Column="4"
+            Grid.RowSpan="2"
+            Grid.ColumnSpan="2"
+            VerticalAlignment="Bottom"
+            HorizontalAlignment="Right"
+            Margin="10"
+            Content="Cancel"
+            FontFamily="Arial"
+            Foreground="MintCream"
+            Background="MediumSlateBlue"
+            BorderBrush="MintCream"
+            Height="30"
+            Width="52"
+            Click="btnCancel_Click">
             <Button.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="10"/>

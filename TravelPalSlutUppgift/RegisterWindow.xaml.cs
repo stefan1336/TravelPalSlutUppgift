@@ -70,15 +70,7 @@ namespace TravelPalSlutUppgift
 
                     }
                 }
-                //    else
-                //    {
-                //        MessageBox.Show("Username is invalid or upptaget", "Warning!");
-                //    }
-                //}
-                //else
-                //{
-                //    MessageBox.Show("Passwords don't match!", "Warning!");
-                //}
+
             }
             catch(ArgumentNullException ex)
             {

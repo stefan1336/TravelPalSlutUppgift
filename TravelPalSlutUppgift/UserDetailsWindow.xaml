@@ -85,10 +85,11 @@
             Grid.Row="3"
             Grid.Column="2"
             Grid.ColumnSpan="2"
-            Grid.RowSpan="2"
-            VerticalAlignment="Top"
+            FontSize="10"
+            
+            Margin="5"
+            VerticalAlignment="Center"
             HorizontalAlignment="Center"
-            Margin="10"
             Background="Transparent"
             BorderBrush="MintCream"
             Foreground="MediumSlateBlue"
@@ -153,15 +154,18 @@
         <Button
             Name="btnCancel"
             Grid.Row="8"
-            Grid.Column="4"
+            Grid.Column="5"
             Grid.RowSpan="2"
-            VerticalAlignment="Top"
+            Grid.ColumnSpan="2"
+            VerticalAlignment="Bottom"
+            HorizontalAlignment="Right"
             Margin="10"
             Content="Cancel"
             FontFamily="Arial"
             Foreground="MintCream"
             Background="MediumSlateBlue"
             BorderBrush="MintCream"
+            Width="52"
             Height="30" Click="btnCancel_Click" >
             <Button.Resources>
                 <Style TargetType="Border">

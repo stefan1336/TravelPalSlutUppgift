@@ -68,17 +68,6 @@ namespace TravelPalSlutUppgift
             string username = txtUserName.Text;
             string password = pswPassword.Password;
 
-            //foreach(IUser user in users)
-            //{
-            //    if(user is Admin)
-            //    {
-            //        // Göra något för admin
-            //        TravelsWindow travelsWindow = new(userManager);
-
-            //        Close();
-            //        travelsWindow.Show();
-            //    }
-            //}
             if(userManager.SignInUser(username, password))
             {
                 TravelsWindow travelsWindow = new(userManager, travelManager);

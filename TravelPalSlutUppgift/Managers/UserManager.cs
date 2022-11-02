@@ -122,7 +122,7 @@ namespace TravelPalSlutUppgift.Managers
      
         public bool UpdateUsername(IUser user, string username)
         {
-            //user.UserName = username;
+
             // uppdatera användarinformation
             // är användarnamnet för kort får man ett varningsmedelande
            
