@@ -67,8 +67,7 @@ namespace TravelPalSlutUppgift
             //txtConfirmPassword.Text = userManager.SignedInUser.Password;
             //lbUserInfo.Content = userManager.SignedInUser.Locations;
 
-            
-
+           
         }
 
         private void btnSave_Click(object sender, RoutedEventArgs e)
@@ -77,34 +76,35 @@ namespace TravelPalSlutUppgift
             // Registrera användare
             try
             {
-                // Få in UpdateUserName
-                // Få in UpdatePassword
+                
+                // Skapa nya användaruppgifter
                 string newUsername = txtUserName.Text;
                 string newPassword = txtPassword.Text;
                 string confirmPassword = txtConfirmPassword.Text;
 
-
-                if (this.userManager.UpdateUsername(user, newUsername) && this.userManager.UpdatePassword(user, newPassword, confirmPassword))
+                // Hämtar mina metoder för att uppdatera användarnamnet och lösenordet
+                if (this.userManager.UpdateUsername(user,newUsername) && this.userManager.UpdatePassword(user, newPassword, confirmPassword))
                 {
-                    userManager.SignedInUser.UserName = newUsername;
-                    userManager.SignedInUser.Password = newPassword;
-                    userManager.SignedInUser.ConfirmPassword = confirmPassword;
                     
                     string newLocation = cbCountry.Text;
                     Countries selectedCountry = (Countries)Enum.Parse(typeof(Countries), newLocation);
                     userManager.SignedInUser.Locations = selectedCountry;
+
+                    userManager.SignedInUser.UserName = newUsername;
+                    userManager.SignedInUser.Password = newPassword;
+                    userManager.SignedInUser.ConfirmPassword = confirmPassword;
 
                     TravelsWindow travelsWindow = new(userManager, travelManager);
                     travelsWindow.Show();
                     Close();
 
                 }
-
+                // nullreferenceexception ex
             }
 
-            catch (Exception ex)
+            catch (ArgumentException ex/*Exception ex*/)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show("You need to make a full registration of a updated userinfo"/*ex.Message*/);
             }
 
 
@@ -114,7 +114,7 @@ namespace TravelPalSlutUppgift
         private void btnCancel_Click(object sender, RoutedEventArgs e)
         {
             // återgå till transferwindow
-            TravelsWindow travelsWindow = new(userManager);
+            TravelsWindow travelsWindow = new(userManager, travelManager);
             travelsWindow.Show();
             Close();
 

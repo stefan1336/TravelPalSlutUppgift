@@ -30,6 +30,16 @@ namespace TravelPalSlutUppgift
 
             this.userManager = new();
             this.travelManager = new();
+
+            foreach (IUser user in userManager.GetAllUsers())
+            {
+                if (user is User)
+                {
+                    User appUser = user as User;
+
+                    travelManager.travels.AddRange(appUser.Travels);
+                }
+            }
         }
         
         public MainWindow(UserManager userManager, TravelManager travelManager)
@@ -58,9 +68,20 @@ namespace TravelPalSlutUppgift
             string username = txtUserName.Text;
             string password = pswPassword.Password;
 
-            if(userManager.signInUser(username, password))
+            //foreach(IUser user in users)
+            //{
+            //    if(user is Admin)
+            //    {
+            //        // Göra något för admin
+            //        TravelsWindow travelsWindow = new(userManager);
+
+            //        Close();
+            //        travelsWindow.Show();
+            //    }
+            //}
+            if(userManager.SignInUser(username, password))
             {
-                TravelsWindow travelsWindow = new(userManager);
+                TravelsWindow travelsWindow = new(userManager, travelManager);
 
                 Close();
                 travelsWindow.Show();

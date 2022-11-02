@@ -59,26 +59,36 @@ namespace TravelPalSlutUppgift
         private bool CheckInputs()
         {
             // Se till så att allt är ifyllt för att ha möjlighet att gå vidare
-            string destination = txtDestination.Text;
-            string country = cbCountry.SelectedItem as string;
-            Countries selectedCountry = (Countries)Enum.Parse(typeof(Countries), country);
-            string travelers = txtTravelers.Text;
-            string tripOrVacation = cbTripOrVacation.SelectedItem as string;
-            TripVacation tripVacation = (TripVacation)Enum.Parse(typeof(TripVacation), tripOrVacation);
-            // Markera ut för att köra programmet
-
-            string[] fields = new[] {destination, country, travelers, tripOrVacation };
-
-            foreach(string field in fields)
+            try
             {
-                if (string.IsNullOrEmpty(field))
+                string destination = txtDestination.Text;
+                string country = cbCountry.SelectedItem as string;
+                Countries selectedCountry = (Countries)Enum.Parse(typeof(Countries), country);
+                string travelers = txtTravelers.Text;
+                string tripOrVacation = cbTripOrVacation.SelectedItem as string;
+                TripVacation tripVacation = (TripVacation)Enum.Parse(typeof(TripVacation), tripOrVacation);
+                // Markera ut för att köra programmet
+
+                string[] fields = new[] { destination, country, travelers, tripOrVacation };
+
+                foreach (string field in fields)
                 {
-                    MessageBox.Show("You need to make a full travel registration");
-                    return false;
-                    
+                    if (string.IsNullOrEmpty(field))
+                    {
+                        MessageBox.Show("You need to make a full travel registration");
+                        return false;
+
+                    }
                 }
+            
+            }
+            catch (ArgumentNullException ex)
+            {
+                MessageBox.Show("You need to make a full registration");
+                return false;
             }
             return true;
+
         }
 
         private void btnSaveTravelInfo_Click(object sender, RoutedEventArgs e)
@@ -128,6 +138,7 @@ namespace TravelPalSlutUppgift
 
                     TravelsWindow travelsWindow = new(userManager, travelManager);
                     travelsWindow.Show();
+                    Close();
                 }
 
                 catch (Exception ex)

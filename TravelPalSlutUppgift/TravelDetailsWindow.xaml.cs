@@ -82,5 +82,13 @@ namespace TravelPalSlutUppgift
             //lbSpecial.Content = travel.GetTravelType(); // ska stå all inclusive
 
         }
+
+        private void lblCancel_Click(object sender, RoutedEventArgs e)
+        {
+            // go back
+            TravelsWindow travelsWindow = new(userManager, travelManager);
+            travelsWindow.Show();
+            Close();
+        }
     }
 }

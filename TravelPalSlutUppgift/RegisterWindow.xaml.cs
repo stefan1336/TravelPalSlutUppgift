@@ -24,6 +24,7 @@ namespace TravelPalSlutUppgift
     {
         private UserManager userManager;
         private TravelManager travelManager;
+        private User user;
         
         public RegisterWindow(UserManager userManager, TravelManager travelManager)
         {
@@ -40,42 +41,52 @@ namespace TravelPalSlutUppgift
 
         private void btnRegister_Click(object sender, RoutedEventArgs e)
         {
-
-            // Registrera användare
-            string username = txtUserName.Text;
-            string password = pswPassWord.Password;
-            string country = cbCountry.SelectedItem as string;
-            Countries selectedCountry = (Countries)Enum.Parse(typeof(Countries), country);
-            // Få confirm password att funka?
-            string confirmPassword = pswConfirmPassword.Password;
-
-            
-
-            // skapa en if sats om användarnamet redan finns
-            
-
-            if(this.userManager.ConfirmPassword(password, confirmPassword))
+            try
             {
-                // Lyckats adda en user
-                if (this.userManager.AddUser(username, password, selectedCountry))
-                {
-                    
-                    // Återgå till mainwindow
+                // Registrera användare
+                string username = txtUserName.Text;
+                string password = pswPassWord.Password;
 
-                    MainWindow mainwindow = new(userManager, travelManager);
-                    mainwindow.Show();
-                    Close();
+                // Få confirm password att funka?
+                string confirmPassword = pswConfirmPassword.Password;
 
-                }
-                else
+                // skapa en if sats om användarnamet redan finns
+                //if (this.userManager.UpdateUsername(user, newUsername) && this.userManager.UpdatePassword(user, newPassword, confirmPassword))
+
+                if (this.userManager.UpdateUsername(user, username) && this.userManager.ConfirmPassword(password, confirmPassword))
                 {
-                    MessageBox.Show("Username is invalid or upptaget", "Warning!");
+                    // Lyckats adda en user
+                    string country = cbCountry.SelectedItem as string;
+                    Countries selectedCountry = (Countries)Enum.Parse(typeof(Countries), country);
+
+                    if (this.userManager.AddUser(username, password, selectedCountry))
+                    {
+
+                        // Återgå till mainwindow
+
+                        MainWindow mainwindow = new(userManager, travelManager);
+                        mainwindow.Show();
+                        Close();
+
+                    }
                 }
+                //    else
+                //    {
+                //        MessageBox.Show("Username is invalid or upptaget", "Warning!");
+                //    }
+                //}
+                //else
+                //{
+                //    MessageBox.Show("Passwords don't match!", "Warning!");
+                //}
             }
-            else
+            catch(ArgumentNullException ex)
             {
-                MessageBox.Show("Passwords don't match!", "Warning!");
+                MessageBox.Show("You need to make a full registration");
             }
+           
+
+
            
         }
     }

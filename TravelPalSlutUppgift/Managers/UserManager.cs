@@ -61,20 +61,19 @@ namespace TravelPalSlutUppgift.Managers
             if (password.Length < 5)
             {
                 MessageBox.Show("Your password is to short");
+                return false;
             }
-            else if (password == null)
+            else if (string.IsNullOrEmpty(password))
             {
                 MessageBox.Show("You need to enter a password");
+                return false;
             }
-            else if (confirmPassword == null)
+            else if (string.IsNullOrEmpty(confirmPassword))
             {
                 MessageBox.Show("You forgot to confirm your password");
+                return false;
             }
-            //if (password.Length<5)
-            //{
-            //    MessageBox.Show("Password is to short");
-            //    return false;
-            //}
+
             else if(ConfirmPassword(password, confirmPassword)== false)
             {
                 return false;
@@ -89,11 +88,17 @@ namespace TravelPalSlutUppgift.Managers
                 {
                     return true;
                 }
-                else
+                else if (password == null )
                 {
-                MessageBox.Show("Password dont match");
+                    MessageBox.Show("You need to enter a password");
                     return false;
                 }
+                else if(confirmPassword == null)
+                {
+                    MessageBox.Show("You need to confirm your password");
+                }
+                return false;
+                
       
         }
 
@@ -114,18 +119,13 @@ namespace TravelPalSlutUppgift.Managers
             // Om inte upptaget - returnera true
             // Om upptaget - returnera false
         }
-
-        public void RemoveUser()
-        {
-            // Metod för admin att ta bort user
-        }
-
-        // använda iuser?
+     
         public bool UpdateUsername(IUser user, string username)
         {
             //user.UserName = username;
             // uppdatera användarinformation
             // är användarnamnet för kort får man ett varningsmedelande
+           
             if(username.Length <3)
             {
                 MessageBox.Show("Your username is to short ");
@@ -134,6 +134,7 @@ namespace TravelPalSlutUppgift.Managers
             else if(username == null)
             {
                 MessageBox.Show("You need to enter a new username");
+                return false;
             }
             else if(ValidateUsername(username)== false)
             {
@@ -145,7 +146,7 @@ namespace TravelPalSlutUppgift.Managers
             
         }
 
-        public bool signInUser(string username, string password)
+        public bool SignInUser(string username, string password)
         {
             // Logga in användaren
 

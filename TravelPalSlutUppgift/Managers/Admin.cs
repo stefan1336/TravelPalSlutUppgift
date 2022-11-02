@@ -20,5 +20,7 @@ namespace TravelPalSlutUppgift.Managers
             Password=password;
             Locations=locations;
         }
+
+
     }
 }

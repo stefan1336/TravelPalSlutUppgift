@@ -32,20 +32,6 @@ namespace TravelPalSlutUppgift
         private User user;
         private Admin admin;
 
-        public TravelsWindow(UserManager userManager)
-        {
-            InitializeComponent();
-
-            this.travelManager = new();
-            this.userManager = userManager;
-
-            InitializeUserSettings();
-
-            UppdateUi();
-
-         
-        }
-
         public TravelsWindow(UserManager userManager, TravelManager travelManager)
         {
             InitializeComponent();
@@ -74,11 +60,13 @@ namespace TravelPalSlutUppgift
         private void UppdateUi()
         {
             // Uppdatera Ui
-            lbUserName.Content = this.user.UserName;
+            
             //txtUserName.Text = this.user.UserName;
             
             if (this.userManager.SignedInUser is User)
+
             {
+                lbUserName.Content = this.user.UserName;
                 // Inloggad som user
                 User signedInUser = this.userManager.SignedInUser as User;  
 
@@ -98,8 +86,55 @@ namespace TravelPalSlutUppgift
                     }
                 }
             }
+            
+            else if(this.userManager.SignedInUser is Admin)
+
+            {
+                lbUserName.Content = this.admin.UserName;
+
+                Admin signedInAdmin = this.userManager.SignedInUser as Admin;
+
+                if(signedInAdmin is Admin)
+                {
+
+                    //lwTravelInfo.Items;
+                    // Sätta en bool för admin/ user, så att admin kan ta bort och lägga till resor samt se alla resor medan en user inte kan det
+
+                    // Om antalet resor är större än 0
+                    if (travelManager.travels.Count > 0)
+                    {
+                        lwTravelInfo.Items.Clear();
+                        foreach (var travel in travelManager.travels)
+                        {
+
+                            ListViewItem item = new();
+                            item.Content = travel.GetInfo();
+                            item.Tag = travel;
+
+                            lwTravelInfo.Items.Add(item);
+
+                        }
+                    }
+                }
+            }
         }
 
+        //public void FilterTravels()
+        //{
+        //    List<Travel> travel = new();
+
+        //    travel = this.userManager.GetAllUsers();
+
+        //    foreach(Travel addtravel in travel)
+        //    {
+        //        if(travel is Travel)
+        //        {
+        //            travels.Add(addtravel as Travel);
+        //        }
+        //    }
+
+
+        //}
         private void btnUserDetails_Click(object sender, RoutedEventArgs e)
         {
             // Öppna user window
@@ -139,16 +174,16 @@ namespace TravelPalSlutUppgift
 
                 TravelDetailsWindow travelDetailsWindow = new(userManager, travelManager, selectedTravel);
                 travelDetailsWindow.Show();
-                
-                 
+                Close();
+
+
             }
             else
             {
                 MessageBox.Show("You need to pick a travel");
-
             }
 
-            Close();
+            
         }
 
         private void btnRemove_Click(object sender, RoutedEventArgs e)
@@ -160,8 +195,22 @@ namespace TravelPalSlutUppgift
                 // Ta bort resa från listView
                 
                 Travel selectedTravel = selectedItem.Tag as Travel;
-                this.user.Travels.Remove(selectedTravel);
-                
+                //this.user.Travels.Remove(selectedTravel);
+
+                foreach (IUser user in userManager.GetAllUsers())
+                {
+                    if(user is User)
+                    {
+                        User appUser = user as User;
+                        
+                        if(appUser.Travels.Contains(selectedTravel))
+                        {
+                            appUser.Travels.Remove(selectedTravel);
+                        }
+                    }
+                }
+
+                travelManager.travels.Remove(selectedTravel);
             }
             else
             {
