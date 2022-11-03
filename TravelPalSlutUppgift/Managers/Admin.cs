@@ -21,6 +21,7 @@ namespace TravelPalSlutUppgift.Managers
             Locations=locations;
         }
 
+        
 
     }
 }

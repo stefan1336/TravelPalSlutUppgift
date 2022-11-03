@@ -32,12 +32,12 @@ namespace TravelPalSlutUppgift
         
         private UserManager userManager;
 
-        private User user;
+        //private User user;
        
         public AddTravelsWindow(TravelManager travelManager, UserManager userManager)
         {
             InitializeComponent();
-
+           
             string[] getCountries = Enum.GetNames(typeof(Countries));
 
             cbCountry.ItemsSource = getCountries;
@@ -56,6 +56,7 @@ namespace TravelPalSlutUppgift
           
         }
 
+        // En metod för att kolla inputs i mitt addtravels window så allt är ifyllt
         private bool CheckInputs()
         {
             // Se till så att allt är ifyllt för att ha möjlighet att gå vidare
@@ -75,14 +76,14 @@ namespace TravelPalSlutUppgift
                 {
                     if (string.IsNullOrEmpty(field))
                     {
-                        MessageBox.Show("You need to make a full travel registration");
+                        MessageBox.Show("Your registration is not completed");
                         return false;
 
                     }
                 }
             
             }
-            catch (ArgumentNullException ex)
+            catch (ArgumentNullException)
             {
                 MessageBox.Show("You need to make a full registration");
                 return false;
@@ -91,11 +92,12 @@ namespace TravelPalSlutUppgift
 
         }
 
+        // Om mina check inputs stämmer sparas en resa och man återgår till föregående fönster annars får man upp ett varningsmedelande om att fylla i allt
         private void btnSaveTravelInfo_Click(object sender, RoutedEventArgs e)
         {
             if(CheckInputs())
             {
-                //Spara ny information om vad användaren väljer
+                
                 string destination = txtDestination.Text;
 
                 try
@@ -105,25 +107,17 @@ namespace TravelPalSlutUppgift
                     string country = cbCountry.SelectedItem as string;
                     Countries selectedCountry = (Countries)Enum.Parse(typeof(Countries), country);
 
-                    //string tripOrVacation = cbTripOrVacation.SelectedItem as string;
-                    //TripVacation tripVacation = (TripVacation)Enum.Parse(typeof(Countries), tripOrVacation);
-                    //selectedTravelType == "Trip"
-
                     if (travelIsATrip)
                     {
                         string selectedTripType = cbTriChoose.SelectedItem as string;
                         TripTypes selectedType = (TripTypes)Enum.Parse(typeof(TripTypes), selectedTripType);
-
-                        //Trip trip = new(destination, selectedCountry, travelers, selectedType);
-
 
                         Travel travel = this.travelManager.CreateTravel(destination, selectedCountry, travelers, selectedType);
 
                         User user = userManager.SignedInUser as User;
 
                         user.Travels.Add(travel);
-                    }
-                    //selectedTravelType == "Vacation"
+                    }                   
                     else if (travelIsAVacation)
                     {
 
@@ -141,15 +135,15 @@ namespace TravelPalSlutUppgift
                     Close();
                 }
 
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    MessageBox.Show(ex.Message);
+                    MessageBox.Show("Please enter a number instead of a letter");
                 }
             }
         }
 
      
-
+        // återgå till tidigare fönster
         private void btnCancel_Click(object sender, RoutedEventArgs e)
         {
             // Gå tillbaka till föregående fönster
@@ -158,6 +152,7 @@ namespace TravelPalSlutUppgift
             Close();
         }
 
+        // Beroende på om man väljer Travel eller trip dyker antingen en ny combobox upp eller en checkbox
         private void cbTripOrVacation_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             switch (cbTripOrVacation.SelectedItem.ToString())

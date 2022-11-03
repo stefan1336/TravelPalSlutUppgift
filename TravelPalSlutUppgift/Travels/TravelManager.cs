@@ -14,7 +14,7 @@ namespace TravelPalSlutUppgift.Travels
 
         public Travel AddTravel(Travel travel)
         {
-            // TODO: skapa antingen trip eller vacation, inte ren travel
+            // Lägga till resa
             travels.Add(travel);
 
             return travel;
@@ -22,24 +22,26 @@ namespace TravelPalSlutUppgift.Travels
 
         public Travel CreateTravel(string destination, Countries countries, int travelers, TripTypes tripType)
         {
+            // en metod för att lägga till en trip
             Trip trip = new(destination, countries, travelers, tripType);
             return AddTravel(trip);
         }
 
         public Travel CreateTravel(string destination, Countries countries, int travelers, bool allInclusive)
         {
+            // en metod för att lägga till en vacation
             Vacation vacation = new(destination, countries, travelers, allInclusive);
             return AddTravel(vacation);
         }
 
               
         
-        public void AddToList(Travel travel)
-        {
-            // lägga till resor
-            travels.Add(travel);
+        //public void AddToList(Travel travel)
+        //{
+        //    // lägga till resor
+        //    travels.Add(travel);
             
-        }
+        //}
 
         // Ta bort en resa
         public void RemoveTravel(Travel travel)

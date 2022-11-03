@@ -21,12 +21,13 @@ namespace TravelPalSlutUppgift.Travels
 
         public override string GetInfo()
         {
-            // sträng
+            // overridar från travel och  skickar tillbaka valt land vilket är det enda som pritas ut i listviewn
             return $"{base.Countrys} ";
         }
 
         public override string GetTravelType()
         {
+            // overridar från travel och  retunerar trip om man valt det när man lägger till en ny resa
             return "Trip";
         }
     }

@@ -23,6 +23,6 @@ namespace TravelPalSlutUppgift.Managers
             Locations=locations;
         }
 
-        // Lägg till travel
+        
     }
 }

@@ -57,11 +57,10 @@ namespace TravelPalSlutUppgift
             }
         }
 
+        // Uppdaterar ui beroende på om det är en user som loggat in eller en admin
         private void UppdateUi()
         {
-            // Uppdatera Ui
-            
-            //txtUserName.Text = this.user.UserName;
+
             
             if (this.userManager.SignedInUser is User)
 
@@ -120,24 +119,24 @@ namespace TravelPalSlutUppgift
             }
         }
 
-
+        // En knapp för att öppna user details window
         private void btnUserDetails_Click(object sender, RoutedEventArgs e)
         {
-            // Öppna user window
             
             UserDetailsWindow userDetailsWindow = new(userManager, travelManager);
             userDetailsWindow.Show();
             Close();
         }
 
+        // En knapp för historik om appen och funktion
         private void btnInfo_Click(object sender, RoutedEventArgs e)
         {
             // Poppa upp en liten ruta med info om företaget
-            MessageBox.Show("This is a travelplaning app. You can add Travels to your list and if you want to remove a travel you can also do that");
-            MessageBox.Show("This is a company started by Albin Karlsson for his students to show their skills in oop");
+            MessageBox.Show("This is a travelplaning app. You can add Travels to your list and if you want to remove a travel you can also do that. This is a company started by Albin Karlsson for his students to show their skills in oop");
 
         }
 
+        // En knapp för att logga ut
         private void btnSignOut_Click(object sender, RoutedEventArgs e)
         {
             // Logga ut, återgå till mainwindow
@@ -147,15 +146,13 @@ namespace TravelPalSlutUppgift
 
         }
 
+        // öppna fönstret travel details om en specifik resa i listviewn
+        // Om inget är markerat i listview ska ett varningsmedelande visas
         private void btnDetails_Click(object sender, RoutedEventArgs e)
         {
-            // öppna fönstret travel details om en specifik resa i listviewn
-            // Om inget är markerat i listview ska ett varningsmedelande visas
 
             ListViewItem selectedItem = lwTravelInfo.SelectedItem as ListViewItem;
             
-
-
             if (selectedItem != null)
             {
                 Travel selectedTravel = selectedItem.Tag as Travel;
@@ -164,16 +161,15 @@ namespace TravelPalSlutUppgift
                 travelDetailsWindow.Show();
                 Close();
 
-
             }
             else
             {
                 MessageBox.Show("You need to pick a travel");
             }
-
-            
+           
         }
 
+        // En knapp för att ta bort en resa 
         private void btnRemove_Click(object sender, RoutedEventArgs e)
         {
             ListViewItem selectedItem = lwTravelInfo.SelectedItem as ListViewItem;
@@ -183,7 +179,6 @@ namespace TravelPalSlutUppgift
                 // Ta bort resa från listView
                 
                 Travel selectedTravel = selectedItem.Tag as Travel;
-                //this.user.Travels.Remove(selectedTravel);
 
                 foreach (IUser user in userManager.GetAllUsers())
                 {
@@ -210,9 +205,10 @@ namespace TravelPalSlutUppgift
 
         }
 
+        // Öppna upp fönstret Add för att lägga till resor till listwiev
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
-            // Öppna upp fönstret Add för att lägga till resor till listwiev
+            
             AddTravelsWindow addTravelsWindow = new(travelManager, userManager);
             addTravelsWindow.Show();
             Close();

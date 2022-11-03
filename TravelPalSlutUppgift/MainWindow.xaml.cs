@@ -50,6 +50,7 @@ namespace TravelPalSlutUppgift
             this.travelManager = travelManager;
         }
 
+        // En knapp för att registrera användaren
         private void btnRegister_Click(object sender, RoutedEventArgs e)
         {
             // Registrera användare
@@ -60,6 +61,7 @@ namespace TravelPalSlutUppgift
             Close();
         }
 
+        // En knapp för att logga in
         private void btnSignIn_Click(object sender, RoutedEventArgs e)
         {
             // Logga in användare

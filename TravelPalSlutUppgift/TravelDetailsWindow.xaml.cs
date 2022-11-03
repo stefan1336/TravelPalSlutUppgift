@@ -42,9 +42,9 @@ namespace TravelPalSlutUppgift
             {
                 Trip trip = travel as Trip;
 
-                lbTripOrVacation.Content = $"This is a:{trip.Type} trip";
+                lbTripOrVacation.Content = $"This is a: {trip.Type} trip";
                 lbSpecial.Content= "";
-                // Ta bort så den inte syns
+               
             }
             else if (travel is Vacation)
             {
@@ -52,7 +52,7 @@ namespace TravelPalSlutUppgift
 
                 if(vacation != null && vacation.AllInclusive) 
                 {
-                    lbSpecial.Content = "All Inclusive";
+                    lbSpecial.Content = "All Inclusive ✔";
                     lbTripOrVacation.Content ="";
 
                 }
@@ -67,25 +67,22 @@ namespace TravelPalSlutUppgift
             UppdateUi();
         }
 
+        // Uppdatera ui så destination, country och travelers printas ut beorende på vilken typ av resa som valts
         private void UppdateUi()
         {
 
-            // Uppdatera
             lblDestination.Content = travel.Destination;
 
             lblCountry.Content = travel.Countrys;
 
             lblTravelers.Content = travel.Travelers;
 
-            //lbTripOrVacation.Content = travel.GetTravelType(); // Visa trip
-
-            //lbSpecial.Content = travel.GetTravelType(); // ska stå all inclusive
-
         }
 
+        // Återgå till tidigare fönster
         private void btnCancel_Click(object sender, RoutedEventArgs e)
         {
-            // go back
+            
             TravelsWindow travelsWindow = new(userManager, travelManager);
             travelsWindow.Show();
             Close();

@@ -24,12 +24,13 @@ namespace TravelPalSlutUppgift.Travels
 
         public virtual string GetInfo()
         {
-            // sträng
+            // Hämta landet användaren har valt
             return $" {Countrys} ";
         }
 
         public virtual string GetTravelType()
         {
+            // Retunerar vilken traveltype man valt
             return "TravelType";
         }
     }

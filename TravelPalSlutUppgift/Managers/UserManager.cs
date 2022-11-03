@@ -22,6 +22,8 @@ namespace TravelPalSlutUppgift.Managers
         // Skapat en Admin och lagt till användarnamn och lösen för den
         public UserManager()
         {
+            // Här lägger jag till användaren Gandalf och Admin och hårdkodar in två resor åt Gandalf
+
             User user = new("Gandalf", "password", Enums.Countries.Sweden);
 
             Vacation vacation1 = new("Varberg", Enums.Countries.Algeria, 2, true);
@@ -38,12 +40,14 @@ namespace TravelPalSlutUppgift.Managers
         // Skapat en metod för att hämta alla användare
         public List<IUser> GetAllUsers()
         {
+            // Lista för alla mina Users
             return users;
         }
 
         // En metod för att lägga till användare
         public bool AddUser(string username, string password, Countries country)
         {
+            // Metod för att lägga till användare där jag även kollar om min validateUsername är godkänd så inte t.ex användarnamnet redan finns
             if(ValidateUsername(username))
             {
                 User user = new(username, password, country);
@@ -56,26 +60,34 @@ namespace TravelPalSlutUppgift.Managers
             return false;
         }
 
+
+
         public bool UpdatePassword(IUser user, string password, string confirmPassword)
         {
+            // Metod för att uppdatera lösenord
             if (password.Length < 5)
             {
+                // Lösenordet ska vara större än 5 bokstäver annars får man ett varningsmedelande
                 MessageBox.Show("Your password is to short");
                 return false;
             }
             else if (string.IsNullOrEmpty(password))
             {
+                // Om inget är ifyllt i lösenord ska man få upp ett varningsmedelande
                 MessageBox.Show("You need to enter a password");
                 return false;
             }
             else if (string.IsNullOrEmpty(confirmPassword))
             {
+                // Om inget är ifyllt i confirm password ska man få upp ett varningsmedelande
                 MessageBox.Show("You forgot to confirm your password");
                 return false;
             }
 
             else if(ConfirmPassword(password, confirmPassword)== false)
             {
+                // Kollaså lösenordet och confirm password överensstämmer
+                MessageBox.Show("Password doesn't match");
                 return false;
             }
 
@@ -84,22 +96,23 @@ namespace TravelPalSlutUppgift.Managers
         public bool ConfirmPassword(string password, string confirmPassword)
         {
 
-                if (password == confirmPassword)
-                {
-                    return true;
-                }
-                else if (password == null )
+                if (string.IsNullOrEmpty(password))
                 {
                     MessageBox.Show("You need to enter a password");
                     return false;
                 }
-                else if(confirmPassword == null)
+                else if(string.IsNullOrEmpty(confirmPassword))
                 {
                     MessageBox.Show("You need to confirm your password");
+                     return false;
                 }
+                else if(password != confirmPassword)
+                {
+                MessageBox.Show("Password doesn't match");
                 return false;
-                
-      
+                }
+            return true;
+                    
         }
 
         private bool ValidateUsername(string username)
@@ -125,17 +138,18 @@ namespace TravelPalSlutUppgift.Managers
 
             // uppdatera användarinformation
             // är användarnamnet för kort får man ett varningsmedelande
-           
-            if(username.Length <3)
+
+            if (string.IsNullOrEmpty(username))
+            {
+                MessageBox.Show("You need to enter a username");
+                return false;
+            }
+            else if (username.Length <3)
             {
                 MessageBox.Show("Your username is to short ");
                 return false;
             }
-            else if(username == null)
-            {
-                MessageBox.Show("You need to enter a new username");
-                return false;
-            }
+
             else if(ValidateUsername(username)== false)
             {
                 // om användarnamnet redan finns

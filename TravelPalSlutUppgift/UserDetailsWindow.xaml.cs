@@ -40,8 +40,6 @@ namespace TravelPalSlutUppgift
         {
             InitializeComponent();
 
-            //this.iUser = userManager.SignedInUser;
-
             if (userManager.SignedInUser is User)
             {
                 this.user = userManager.SignedInUser as User;
@@ -65,10 +63,11 @@ namespace TravelPalSlutUppgift
            
         }
 
+        // Spara uppdaterad användaruppgifter
+        // Registrera användare
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
-            // Spara uppdaterad användaruppgifter
-            // Registrera användare
+
             try
             {
                 
@@ -94,18 +93,17 @@ namespace TravelPalSlutUppgift
                     Close();
 
                 }
-                // nullreferenceexception ex
+                
             }
 
-            catch (ArgumentException ex)
+            catch (ArgumentException)
             {
                 MessageBox.Show("You need to make a full registration of a updated userinfo");
             }
 
-
-
         }
 
+        // Återgå till tidigare fönster
         private void btnCancel_Click(object sender, RoutedEventArgs e)
         {
             // återgå till transferwindow
@@ -115,19 +113,11 @@ namespace TravelPalSlutUppgift
 
         }
 
+        // Uppdaterar ui och skriver ut användarnamn samt landet
         private void UpdateUi()
         {
-            // Printa ut användarinformation i rutan
-            //lbUserInfo.Content = this.user.UserName;
-            //if(user is User)
-            //{
-                lbUserInfo.Content = $"{user.UserName} {user.Locations}";
-            //}
-            //else if (user is Admin)
-            //{
-            //    lbUserInfo.Content = $"{user.UserName} {user.Locations}";
-            //}
-            
+
+            lbUserInfo.Content = $"{user.UserName} {user.Locations}";
 
         }
     }
