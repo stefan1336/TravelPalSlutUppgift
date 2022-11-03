@@ -79,6 +79,8 @@ namespace TravelPalSlutUppgift
 
         }
 
+        
+
         // Återgå till tidigare fönster
         private void btnCancel_Click(object sender, RoutedEventArgs e)
         {

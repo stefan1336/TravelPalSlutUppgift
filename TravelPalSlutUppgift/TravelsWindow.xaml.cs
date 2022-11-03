@@ -95,13 +95,11 @@ namespace TravelPalSlutUppgift
 
                 if(signedInAdmin is Admin)
                 {
-
-                    //lwTravelInfo.Items;
-                    // Sätta en bool för admin/ user, så att admin kan ta bort och lägga till resor samt se alla resor medan en user inte kan det
-
+                   
                     // Om antalet resor är större än 0
                     if (travelManager.travels.Count > 0)
                     {
+                        btnAdd.Visibility = Visibility.Hidden;
                         btnUserDetails.Visibility = Visibility.Hidden;
                         lwTravelInfo.Items.Clear();
                         foreach (var travel in travelManager.travels)
@@ -197,7 +195,7 @@ namespace TravelPalSlutUppgift
             }
             else
             {
-                MessageBox.Show("You need to pick a travel");
+                MessageBox.Show("Please pick a travel you would like to remove");
             }
             UppdateUi();
             // Ta bort en markerad resa från listviewn

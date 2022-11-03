@@ -35,15 +35,8 @@ namespace TravelPalSlutUppgift.Travels
         }
 
               
-        
-        //public void AddToList(Travel travel)
-        //{
-        //    // lägga till resor
-        //    travels.Add(travel);
-            
-        //}
-
-        // Ta bort en resa
+       
+        // Ta bort en resa ( använder en annan travel metod)
         public void RemoveTravel(Travel travel)
         {
             travels.Remove(travel);

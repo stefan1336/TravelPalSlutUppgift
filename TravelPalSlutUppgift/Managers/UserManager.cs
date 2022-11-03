@@ -111,7 +111,7 @@ namespace TravelPalSlutUppgift.Managers
                 MessageBox.Show("Password doesn't match");
                 return false;
                 }
-            return true;
+                return true;
                     
         }
 
