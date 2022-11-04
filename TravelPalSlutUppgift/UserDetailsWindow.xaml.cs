@@ -98,7 +98,7 @@ namespace TravelPalSlutUppgift
 
             catch (ArgumentException)
             {
-                MessageBox.Show("You need to make a full registration of a updated userinfo");
+                MessageBox.Show("You need to make a full registration of a updated userinfo ☠");
             }
 
         }

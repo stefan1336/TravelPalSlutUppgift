@@ -24,6 +24,7 @@ namespace TravelPalSlutUppgift
     {
         // skicka med användaren till resefönstret
 
+        
         List<Travel> travels = new();
         private UserManager userManager;
 
@@ -130,7 +131,7 @@ namespace TravelPalSlutUppgift
         private void btnInfo_Click(object sender, RoutedEventArgs e)
         {
             // Poppa upp en liten ruta med info om företaget
-            MessageBox.Show("This is a travelplaning app. You can add Travels to your list and if you want to remove a travel you can also do that. This is a company started by Albin Karlsson for his students to show their skills in oop");
+            MessageBox.Show("This is a travelplaning app. You can add Travels to your list and if you want to remove a travel you can also do that. This is a company started by Albin Karlsson for his students to show their skills in oop 😎");
 
         }
 

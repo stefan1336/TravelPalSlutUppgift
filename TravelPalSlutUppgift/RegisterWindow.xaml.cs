@@ -64,7 +64,7 @@ namespace TravelPalSlutUppgift
             }
             catch(ArgumentNullException)
             {
-                MessageBox.Show("You need to make a full registration");
+                MessageBox.Show("You need to make a full registration ☠");
             }
 
 

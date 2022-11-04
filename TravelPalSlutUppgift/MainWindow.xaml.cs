@@ -79,7 +79,7 @@ namespace TravelPalSlutUppgift
             }
             else
             {
-                MessageBox.Show("Username or password is incorrect");
+                MessageBox.Show("Username or password is incorrect ☠");
             }
         }
     }

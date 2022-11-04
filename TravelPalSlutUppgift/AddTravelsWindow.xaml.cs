@@ -76,7 +76,7 @@ namespace TravelPalSlutUppgift
                 {
                     if (string.IsNullOrEmpty(field))
                     {
-                        MessageBox.Show("Your registration is not completed");
+                        MessageBox.Show("Your registration is not completed ☠");
                         return false;
 
                     }
@@ -85,7 +85,7 @@ namespace TravelPalSlutUppgift
             }
             catch (ArgumentNullException)
             {
-                MessageBox.Show("You need to make a full registration");
+                MessageBox.Show("You need to make a full registration ☠");
                 return false;
             }
             return true;
